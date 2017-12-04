@@ -73,6 +73,7 @@ function begin() {
       break;
     }
   }
+  btnOverviewData.addEventListener('click', removeData);
 
 
   // Función mostrar datos overview
@@ -86,21 +87,26 @@ function begin() {
 
       // Los valores de NPS cuentan con sub indicadores
       // Valores información: NPS Promoters
+      var divNps = document.createElement('div');
       var dataNpsPromoters = document.createElement('p');
       dataNpsPromoters.textContent = 'Promoters: ' + sedes[promociones][ratings][0].nps['promoters'] + '%';
-      npsValue.appendChild(dataNpsPromoters);
+      npsValue.appendChild(divNps);
+      divNps.appendChild(dataNpsPromoters);
+      divNps.id = 'divparaborrar';
 
-      dataNpsPromoters.addEventListener('click', removeData);
+      btnOverviewData.addEventListener('click', function(){
+        npsValue.removeChild(divNps);
+      });
 
       // Valores información: NPS Passive
       var dataNpsPassive = document.createElement('p');
       dataNpsPassive.textContent = 'Passive: ' + sedes[promociones][ratings][0].nps['passive'] + '%';
-      npsValue.appendChild(dataNpsPassive);
+      divNps.appendChild(dataNpsPassive);
 
       // Valores información: NPS Detractors
       var dataNpsDetractors = document.createElement('p');
       dataNpsDetractors.textContent = 'Detractors: ' + sedes[promociones][ratings][0].nps['detractors'] + '%';
-      npsValue.appendChild(dataNpsDetractors);
+      divNps.appendChild(dataNpsDetractors);
 
       // Los valores de Student cuentan con sub indicadores
       // Valores información Student Status: No cumple
@@ -128,7 +134,7 @@ function begin() {
       dataJedi.textContent = sedes[promociones][ratings][0].jedi + '%';
       jediValue.appendChild(dataJedi);
 
-  
+
 
       break;
     case (sedes === data['AQP']) && (promociones === '2017-1'):
@@ -558,8 +564,9 @@ function begin() {
 
   }
 
-  function removeData(event) {
-    event.target.parentElement.removeChild(event.currentTarget);
+
+  function removeData() {
+    npsValue.removeChild(divNps);
   }
 
   // Función mostrar datos students
