@@ -1,5 +1,7 @@
 # Data Dashboard
 
+Link GH-PAGES: https://mollygreace.github.io/DATA-DASHBOARD-CR/
+
 * **Distribución del trabajo**
 * **Participantes** _SQUAD: NaN_
 
